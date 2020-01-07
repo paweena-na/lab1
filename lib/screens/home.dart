@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:lab2/screens/RegistorPage.dart';
+import 'package:lab2/screens/loginPage.dart';
 import 'package:lab2/screens/secondPage.dart';
 
 class Home extends StatefulWidget {
@@ -11,7 +12,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Widget buttonRegis() {
+    
     return Container(
+      
       width: 250.0,
       child: RaisedButton.icon(
         icon: Icon(Icons.account_circle, color: Colors.blue[300]),
@@ -19,7 +22,9 @@ class _HomeState extends State<Home> {
         label: Text('Login'),
         onPressed: () {
           var rount = MaterialPageRoute(
-              builder: (BuildContext context) => SecondPage());
+              builder: (BuildContext context) => loginPage(
+                valueFromloginPage: textEditController.text,valueFromloginPage1: textEditController1.text,
+              ));
           Navigator.of(context).push(rount);
         },
       ),
@@ -42,10 +47,12 @@ class _HomeState extends State<Home> {
     );
   }
 
+var textEditController = new TextEditingController();
   Widget emailText() {
     return Container(
       width: 250.0,
       child: TextFormField(
+        controller: textEditController,
         decoration: InputDecoration(
             icon: Icon(
               Icons.email,
@@ -59,10 +66,12 @@ class _HomeState extends State<Home> {
     );
   }
 
+var textEditController1 = new TextEditingController();
   Widget passwordText() {
     return Container(
       width: 250.0,
       child: TextFormField(
+        controller: textEditController1,
         decoration: InputDecoration(
             icon: Icon(
               Icons.keyboard_arrow_down,
