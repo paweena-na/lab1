@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:lab2/screens/RegistorPage.dart';
+import 'package:lab2/screens/secondPage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,20 +11,35 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Widget buttonRegis() {
-    return RaisedButton.icon(
-      icon: Icon(Icons.account_circle,
-      color: Colors.blue[300]),
-      color: Colors.purple[300],
-      label: Text('Login'),
-      onPressed: () {},);
+    return Container(
+      width: 250.0,
+      child: RaisedButton.icon(
+        icon: Icon(Icons.account_circle, color: Colors.blue[300]),
+        color: Colors.purple[300],
+        label: Text('Login'),
+        onPressed: () {
+          var rount = MaterialPageRoute(
+              builder: (BuildContext context) => SecondPage());
+          Navigator.of(context).push(rount);
+        },
+      ),
+    );
   }
+
   Widget button() {
-    return RaisedButton.icon(
-      icon: Icon(Icons.account_circle,
-      color: Colors.blue[300]),
-      color: Colors.purple[300],
-      label: Text('Registor'),
-      onPressed: () {},);
+    return Container(
+      width: 250.0,
+      child: RaisedButton.icon(
+        icon: Icon(Icons.border_color, color: Colors.blue[300]),
+        color: Colors.purple[300],
+        label: Text('Registor'),
+        onPressed: () {
+          var rount = MaterialPageRoute(
+              builder: (BuildContext context) => RegistorPage());
+          Navigator.of(context).push(rount);
+        },
+      ),
+    );
   }
 
   Widget emailText() {
@@ -37,6 +54,7 @@ class _HomeState extends State<Home> {
             ),
             labelText: 'Username',
             hintText: 'your@email.com'),
+            
       ),
     );
   }
@@ -63,7 +81,7 @@ class _HomeState extends State<Home> {
 
   Widget showName() {
     return Text(
-      'Robot Lawn Mower',
+      'paweena',
       style: TextStyle(
           fontSize: 40.0,
           fontWeight: FontWeight.bold,
@@ -74,7 +92,7 @@ class _HomeState extends State<Home> {
 
   Widget showAge() {
     return Text(
-      '21',
+      'Robot Lawn Mower',
       style: TextStyle(
           fontSize: 40.0,
           fontWeight: FontWeight.bold,
@@ -102,8 +120,7 @@ class _HomeState extends State<Home> {
             child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/background.png'),
-            ),
+                image: AssetImage('images/background.png'), fit: BoxFit.cover),
           ),
           child: Center(
             child: Column(
@@ -111,8 +128,8 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 showlogo(),
                 showName(),
-                /*showAge(),
-            showAdddress(),*/
+                showAge(),
+                //showAdddress(),
                 emailText(),
                 passwordText(),
                 buttonRegis(),
